@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CabifyChallenge</string>
+    <string name="product_price">%1$s €</string>
+</resources>
