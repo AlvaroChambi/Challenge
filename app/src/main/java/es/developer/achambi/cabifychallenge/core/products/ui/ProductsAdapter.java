@@ -1,4 +1,4 @@
-package es.developer.achambi.cabifychallenge;
+package es.developer.achambi.cabifychallenge.core.products.ui;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.annotation.NonNull;
@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import es.developer.achambi.cabifychallenge.R;
 import es.developer.achambi.cabifychallenge.databinding.ProductsItemLayoutBinding;
+import es.developer.achambi.cabifychallenge.core.products.ui.viewmodel.ProductPresentation;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHolder> {
     private ArrayList<ProductPresentation> products;

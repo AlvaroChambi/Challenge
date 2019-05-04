@@ -7,7 +7,7 @@
         <import type="android.view.View"/>
         <variable
             name="product"
-            type="es.developer.achambi.cabifychallenge.ProductPresentation" />
+            type="es.developer.achambi.cabifychallenge.core.products.ui.viewmodel.ProductPresentation" />
     </data>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

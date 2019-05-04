@@ -1,4 +1,4 @@
-package es.developer.achambi.cabifychallenge;
+package es.developer.achambi.cabifychallenge.core.products.ui.viewmodel;
 
 public class ProductPresentation {
     public final String name;

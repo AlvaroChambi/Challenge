@@ -1,9 +1,11 @@
-package es.developer.achambi.cabifychallenge;
+package es.developer.achambi.cabifychallenge.core.products.ui;
 
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
 import androidx.appcompat.app.AppCompatActivity;
+
+import es.developer.achambi.cabifychallenge.R;
 
 public class ProductsActivity extends AppCompatActivity {
     @Override

@@ -1,4 +1,4 @@
-package es.developer.achambi.cabifychallenge;
+package es.developer.achambi.cabifychallenge.core.products.ui.viewmodel;
 
 import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
@@ -6,10 +6,12 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Transformations;
 import androidx.annotation.NonNull;
 
-import java.util.ArrayList;
+import es.developer.achambi.cabifychallenge.core.products.data.ProductsRepository;
+
+import static es.developer.achambi.cabifychallenge.core.ui.DataStatePresentationBuilder.buildPresentation;
 
 public class ProductsViewModel extends AndroidViewModel {
-    private LiveData<ArrayList<ProductPresentation>> products;
+    private LiveData<ProductsPresentation> products;
     private ProductsRepository repository;
 
     public ProductsViewModel( @NonNull Application application, ProductsRepository repository ) {
@@ -21,12 +23,14 @@ public class ProductsViewModel extends AndroidViewModel {
         super(application);
     }
 
-    public LiveData<ArrayList<ProductPresentation>> getProducts() {
+    public LiveData<ProductsPresentation> getProducts() {
         if( products != null ) {
             return products;
         }
-        products = Transformations.map(repository.getProducts(),
-                data -> ProductPresentationBuilder.buildPresentation(getApplication(), data));
+
+        products = Transformations.map(repository.getProducts(), data -> new ProductsPresentation(
+                ProductPresentationBuilder.buildPresentation(getApplication(), data),
+                buildPresentation(getApplication(), data)));
         return products;
     }
 }

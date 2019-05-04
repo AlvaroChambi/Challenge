@@ -1,14 +1,21 @@
-package es.developer.achambi.cabifychallenge;
+package es.developer.achambi.cabifychallenge.core.products.ui.viewmodel;
 
 import android.content.Context;
 
 import java.util.ArrayList;
 
+import es.developer.achambi.cabifychallenge.R;
+import es.developer.achambi.cabifychallenge.core.ui.DataState;
+import es.developer.achambi.cabifychallenge.core.products.data.Product;
+
 public class ProductPresentationBuilder {
     public static ArrayList<ProductPresentation> buildPresentation(
-            Context context, ArrayList<Product> products) {
+            Context context, DataState<ArrayList<Product>> products) {
+        if( products.getValue() == DataState.Value.ERROR ) {
+            return new ArrayList<>();
+        }
         ArrayList<ProductPresentation> presentations = new ArrayList<>();
-        for (Product product: products) {
+        for (Product product: products.getData()) {
             presentations.add( buildPresentation( context, product ) );
         }
         return presentations;
@@ -18,7 +25,7 @@ public class ProductPresentationBuilder {
         return new ProductPresentation(
                 product.getProductName(),
                 buildFormattedPrice( context,
-                        String.valueOf( product.getProductPrice() ) )
+                        String.valueOf( product.getProductPrice() ))
         );
     }
 

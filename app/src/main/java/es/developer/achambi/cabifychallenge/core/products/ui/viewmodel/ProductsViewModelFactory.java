@@ -1,9 +1,11 @@
-package es.developer.achambi.cabifychallenge;
+package es.developer.achambi.cabifychallenge.core.products.ui.viewmodel;
 
 import android.app.Application;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.annotation.NonNull;
+
+import es.developer.achambi.cabifychallenge.core.products.data.ProductsRepository;
 
 public class ProductsViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     private ProductsRepository repository;

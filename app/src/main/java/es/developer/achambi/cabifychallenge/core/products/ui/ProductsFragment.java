@@ -1,4 +1,4 @@
-package es.developer.achambi.cabifychallenge;
+package es.developer.achambi.cabifychallenge.core.products.ui;
 
 import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -12,10 +12,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import es.developer.achambi.cabifychallenge.ProductsAssembler;
+import es.developer.achambi.cabifychallenge.core.products.ui.viewmodel.ProductsViewModel;
+import es.developer.achambi.cabifychallenge.R;
+import es.developer.achambi.cabifychallenge.core.ui.LoadingBackground;
+
 public class ProductsFragment extends Fragment {
     private RecyclerView recyclerView;
     private ProductsAdapter adapter;
     private ProductsViewModel productsViewModel;
+    private LoadingBackground loadingBackground;
 
     public static ProductsFragment getInstance() {
         return new ProductsFragment();
@@ -37,6 +43,7 @@ public class ProductsFragment extends Fragment {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity(),
                 DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
+        loadingBackground = root.findViewById(R.id.loading_background);
         return root;
     }
 
@@ -45,10 +52,10 @@ public class ProductsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         productsViewModel = ViewModelProviders.of(this,
                 ProductsAssembler.getViewModelFactory()).get(ProductsViewModel.class);
-        productsViewModel.getProducts().observe(this,
-                products -> {
-                    adapter.setData(products);
-                    recyclerView.setAdapter( adapter );
-                });
+        loadingBackground.startLoading();
+        productsViewModel.getProducts().observe(this, products -> {
+            loadingBackground.displayState(products.dataStatePresentation);
+            adapter.setData(products.productsPresentations);
+            recyclerView.setAdapter( adapter ); });
     }
 }

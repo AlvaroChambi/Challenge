@@ -1,4 +1,4 @@
-package es.developer.achambi.cabifychallenge;
+package es.developer.achambi.cabifychallenge.core.products.data;
 
 import com.google.gson.annotations.SerializedName;
 
