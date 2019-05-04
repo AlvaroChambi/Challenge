@@ -1,9 +1,14 @@
 package es.developer.achambi.cabifychallenge;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Product {
+    @SerializedName("name")
     private String productName;
+    @SerializedName("price")
     private double productPrice;
-    private int productCode;
+    @SerializedName("code")
+    private String productCode;
 
     public String getProductName() {
         return productName;
@@ -21,11 +26,11 @@ public class Product {
         this.productPrice = productPrice;
     }
 
-    public int getProductCode() {
+    public String getProductCode() {
         return productCode;
     }
 
-    public void setProductCode(int productCode) {
+    public void setProductCode(String productCode) {
         this.productCode = productCode;
     }
 }
