@@ -7,4 +7,7 @@
     <string name="checkout_button_tag">CHECKOUT</string>
     <string name="quantity_format">x%1$s</string>
     <string name="products_activity_title">Cabify store products</string>
+    <string name="checkout_activity_title">Checkout</string>
+    <string name="selected_products_checkout_text">Selected products summary</string>
+    <string name="product_discount_tag">discount applied</string>
 </resources>

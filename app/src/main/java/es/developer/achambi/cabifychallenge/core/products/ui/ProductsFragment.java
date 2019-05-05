@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import es.developer.achambi.cabifychallenge.ProductsAssembler;
+import es.developer.achambi.cabifychallenge.core.checkout.CheckoutActivity;
 import es.developer.achambi.cabifychallenge.core.products.ui.viewmodel.ProductPresentation;
 import es.developer.achambi.cabifychallenge.core.products.ui.viewmodel.ProductsViewModel;
 import es.developer.achambi.cabifychallenge.R;
@@ -28,7 +29,7 @@ public class ProductsFragment extends Fragment {
     private SelectedProductsAdapter selectedProductsAdapter;
     private SelectedProductsViewModel selectedProductsViewModel;
 
-    public static ProductsFragment getInstance() {
+    static ProductsFragment getInstance() {
         return new ProductsFragment();
     }
 
@@ -46,6 +47,7 @@ public class ProductsFragment extends Fragment {
         View root = inflater.inflate(R.layout.products_fragment_layout, container, false);
         recyclerView = root.findViewById(R.id.products_recycler_view);
         selectedRecyclerView = root.findViewById(R.id.selected_products_recyclerview);
+        root.findViewById(R.id.checkout_button).setOnClickListener((view) -> checkoutSelected());
         adapter.setListener(this::onProductAddSelected);
         selectedProductsAdapter.setOnDeleteProductListener(this::onDeleteProductSelected);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -74,6 +76,10 @@ public class ProductsFragment extends Fragment {
         selectedProductsViewModel.getSelectedProducts().observe(this, products -> {
             selectedProductsAdapter.setData(products);
         });
+    }
+
+    private void checkoutSelected() {
+        startActivity(CheckoutActivity.getStartIntent(this.getActivity()));
     }
 
     private void onProductAddSelected(ProductPresentation productPresentation) {

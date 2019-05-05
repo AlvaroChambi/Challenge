@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="product"
+            type="es.developer.achambi.cabifychallenge.core.checkout.CheckoutProductPresentation" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/product_total_price"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{product.name}"
+            tools:text="Voucher" />
+
+        <TextView
+            android:id="@+id/product_total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@{product.totalPrice}"
+            tools:text="13€"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/product_name"
+            app:layout_constraintTop_toTopOf="@+id/product_name" />
+
+        <TextView
+            android:id="@+id/product_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/product_name"
+            app:layout_constraintTop_toBottomOf="@+id/product_name"
+            android:text="@{product.quantity}"
+            tools:text="2x" />
+
+        <TextView
+            android:id="@+id/product_unit_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/product_quantity"
+            app:layout_constraintStart_toEndOf="@+id/product_quantity"
+            app:layout_constraintTop_toTopOf="@+id/product_quantity"
+            android:text="@{product.unitPrice}"
+            tools:text="6.50€" />
+
+        <TextView
+            android:id="@+id/product_discount_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/product_discount_tag"
+            android:textColor="@color/colorPrimary"
+            android:visibility="@{product.hasDiscount ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toStartOf="@+id/product_discount_price"
+            app:layout_constraintTop_toBottomOf="@+id/product_total_price" />
+
+        <TextView
+            android:id="@+id/product_discount_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{product.discountedPrice}"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:visibility="@{product.hasDiscount ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/product_discount_tag"
+            app:layout_constraintEnd_toEndOf="@+id/product_total_price"
+            app:layout_constraintTop_toTopOf="@+id/product_discount_tag"
+            tools:text="6.50€" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
