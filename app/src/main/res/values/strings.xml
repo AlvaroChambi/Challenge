@@ -3,4 +3,8 @@
     <string name="product_price">%1$s €</string>
     <string name="network_error_message">Ops! Something went wrong, please try again later</string>
     <string name="error_try_again_tag">Try again</string>
+    <string name="discounts_text">discounts: 2x1 on Voucher items and 19€ for each T-Shirt if you buy 3 or more! </string>
+    <string name="checkout_button_tag">CHECKOUT</string>
+    <string name="quantity_format">x%1$s</string>
+    <string name="products_activity_title">Cabify store products</string>
 </resources>

@@ -12,6 +12,7 @@ public class ProductsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.base_activity);
+        setTitle(R.string.products_activity_title);
         if( savedInstanceState == null) {
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().add( R.id.base_fragment_frame,

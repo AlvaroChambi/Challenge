@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.ArrayList;
 
 import es.developer.achambi.cabifychallenge.core.products.ui.viewmodel.ProductsList;
+import es.developer.achambi.cabifychallenge.core.selected.SelectedProductPresentation;
 import es.developer.achambi.cabifychallenge.core.ui.DataState;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -14,9 +15,67 @@ import retrofit2.Response;
 public class ProductsRepository {
     private ProductsRetrofitService retrofitService;
     private LiveData<DataState<ArrayList<Product>>> cachedProducts;
+    private LiveData<ArrayList<Product>> selectedProducts;
 
     public ProductsRepository( ProductsRetrofitService retrofitService ) {
         this.retrofitService = retrofitService;
+        MutableLiveData<ArrayList<Product>> data = new MutableLiveData<>();
+        data.setValue(new ArrayList<>());
+        selectedProducts = data;
+    }
+
+    public LiveData<ArrayList<Product>> addProduct(String code) {
+        MutableLiveData<ArrayList<Product>> mutable = new MutableLiveData<>();
+        mutable.setValue( selectedProducts.getValue() );
+        selectedProducts = mutable;
+        for(Product product: cachedProducts.getValue().getData()) {
+            if(product.getProductCode().equals(code)) {
+                product.setQuantity( product.getQuantity() + 1 );
+                mutable.getValue().add(product);
+                return mutable;
+            }
+        }
+        return selectedProducts;
+    }
+
+    public LiveData<ArrayList<Product>> deleteProduct(String code) {
+        MutableLiveData<ArrayList<Product>> mutable = new MutableLiveData<>();
+        mutable.setValue( selectedProducts.getValue() );
+        ArrayList<Product> list = selectedProducts.getValue();
+        selectedProducts = mutable;
+        list.remove(findSelectedProduct(code));
+        mutable.setValue(list);
+        return selectedProducts;
+    }
+
+    private Product findSelectedProduct(String code) {
+        Product result = null;
+        for(Product product : selectedProducts.getValue()) {
+            if(product.getProductCode().equals(code)) {
+                result = product;
+            }
+        }
+        return result;
+    }
+
+    public LiveData<ArrayList<Product>> getSelectedProducts() {
+        if(selectedProducts != null) {
+            return selectedProducts;
+        }
+        MutableLiveData<ArrayList<Product>> products = new MutableLiveData<>();
+        selectedProducts = products;
+        ArrayList<Product> selectedProducts = new ArrayList<>();
+        DataState dataState = cachedProducts.getValue();
+        if(dataState == null) {
+            return products;
+        }
+        for(Product product: cachedProducts.getValue().getData()) {
+            if(product.getQuantity() > 0) {
+                selectedProducts.add(product);
+            }
+        }
+        products.setValue(selectedProducts);
+        return products;
     }
 
     public LiveData<DataState<ArrayList<Product>>> getProducts() {

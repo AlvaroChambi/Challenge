@@ -15,14 +15,9 @@ public class ProductsViewModel extends AndroidViewModel {
     private ProductsRepository repository;
 
     public ProductsViewModel( @NonNull Application application, ProductsRepository repository ) {
-        this(application);
+        super(application);
         this.repository = repository;
     }
-
-    public ProductsViewModel(@NonNull Application application) {
-        super(application);
-    }
-
     public LiveData<ProductsPresentation> getProducts() {
         if( products != null ) {
             return products;

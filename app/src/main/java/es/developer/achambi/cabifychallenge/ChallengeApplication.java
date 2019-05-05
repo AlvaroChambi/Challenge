@@ -5,6 +5,7 @@ import android.app.Application;
 import es.developer.achambi.cabifychallenge.core.products.data.ProductsRepository;
 import es.developer.achambi.cabifychallenge.core.products.data.ProductsRetrofitService;
 import es.developer.achambi.cabifychallenge.core.products.ui.viewmodel.ProductsViewModelFactory;
+import es.developer.achambi.cabifychallenge.core.selected.viewmodel.SelectedProductsViewModelFactory;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -25,8 +26,12 @@ public class ChallengeApplication extends Application {
         super.onCreate();
         retrofit = buildRetrofitClient();
         application = this;
+        ProductsRepository productsRepository =
+                new ProductsRepository( retrofit.create(ProductsRetrofitService.class) );
         ProductsAssembler.setViewModelFactory( new ProductsViewModelFactory(this,
-                new ProductsRepository( retrofit.create(ProductsRetrofitService.class) ) ) );
+                productsRepository ) );
+        ProductsAssembler.setSelectedFactory( new SelectedProductsViewModelFactory(
+                productsRepository, this));
     }
 
     private Retrofit buildRetrofitClient() {

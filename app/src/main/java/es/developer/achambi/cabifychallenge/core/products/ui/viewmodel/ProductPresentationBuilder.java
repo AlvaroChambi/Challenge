@@ -23,6 +23,7 @@ public class ProductPresentationBuilder {
 
     static ProductPresentation buildPresentation( Context context, Product product ) {
         return new ProductPresentation(
+                product.getProductCode(),
                 product.getProductName(),
                 buildFormattedPrice( context,
                         String.valueOf( product.getProductPrice() ))
