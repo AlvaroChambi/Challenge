@@ -24,7 +24,7 @@ public class SelectedProductPresentationBuilder {
         return presentations;
     }
 
-    private static String formatQuantity(Context context, int quantity) {
+    public static String formatQuantity(Context context, int quantity) {
         return context.getString(R.string.quantity_format, String.valueOf(quantity));
     }
 }

@@ -8,11 +8,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import java.util.ArrayList;
+
 import es.developer.achambi.cabifychallenge.R;
+import es.developer.achambi.cabifychallenge.core.products.data.Product;
 
 public class CheckoutActivity extends AppCompatActivity {
-    public static Intent getStartIntent(Context context) {
+    public static Intent getStartIntent(Context context, ArrayList<Product> products) {
         Intent intent = new Intent(context, CheckoutActivity.class);
+        intent.putExtras(CheckoutFragment.getFragmentParams(products));
         return intent;
     }
 
@@ -24,7 +28,7 @@ public class CheckoutActivity extends AppCompatActivity {
         if(savedInstanceState == null) {
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().add(R.id.base_fragment_frame,
-                    CheckoutFragment.getInstance()).commit();
+                    CheckoutFragment.getInstance(getIntent().getExtras())).commit();
         }
     }
 }

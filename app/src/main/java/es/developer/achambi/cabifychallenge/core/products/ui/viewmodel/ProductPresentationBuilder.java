@@ -21,7 +21,7 @@ public class ProductPresentationBuilder {
         return presentations;
     }
 
-    static ProductPresentation buildPresentation( Context context, Product product ) {
+    private static ProductPresentation buildPresentation( Context context, Product product ) {
         return new ProductPresentation(
                 product.getProductCode(),
                 product.getProductName(),
@@ -30,7 +30,7 @@ public class ProductPresentationBuilder {
         );
     }
 
-    private static String buildFormattedPrice( Context context, String price ) {
+    public static String buildFormattedPrice( Context context, String price ) {
         return context.getString( R.string.product_price, price );
     }
 }

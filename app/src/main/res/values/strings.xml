@@ -10,4 +10,5 @@
     <string name="checkout_activity_title">Checkout</string>
     <string name="selected_products_checkout_text">Selected products summary</string>
     <string name="product_discount_tag">discount applied</string>
+    <string name="checkout_total_price">Total:  %1$s €</string>
 </resources>

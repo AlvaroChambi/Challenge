@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.ArrayList;
 
 import es.developer.achambi.cabifychallenge.core.products.ui.viewmodel.ProductsList;
-import es.developer.achambi.cabifychallenge.core.selected.SelectedProductPresentation;
 import es.developer.achambi.cabifychallenge.core.ui.DataState;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +30,7 @@ public class ProductsRepository {
         for(Product product: cachedProducts.getValue().getData()) {
             if(product.getProductCode().equals(code)) {
                 product.setQuantity( product.getQuantity() + 1 );
+                mutable.getValue().remove(product);
                 mutable.getValue().add(product);
                 return mutable;
             }

@@ -79,7 +79,8 @@ public class ProductsFragment extends Fragment {
     }
 
     private void checkoutSelected() {
-        startActivity(CheckoutActivity.getStartIntent(this.getActivity()));
+        startActivity(CheckoutActivity.getStartIntent(this.getActivity(),
+                selectedProductsViewModel.getRawSelectedProducts()));
     }
 
     private void onProductAddSelected(ProductPresentation productPresentation) {

@@ -9,6 +9,7 @@ import androidx.lifecycle.Transformations;
 
 import java.util.ArrayList;
 
+import es.developer.achambi.cabifychallenge.core.products.data.Product;
 import es.developer.achambi.cabifychallenge.core.products.data.ProductsRepository;
 import es.developer.achambi.cabifychallenge.core.selected.SelectedProductPresentation;
 import es.developer.achambi.cabifychallenge.core.selected.SelectedProductPresentationBuilder;
@@ -17,10 +18,14 @@ public class SelectedProductsViewModel extends AndroidViewModel {
     private ProductsRepository repository;
     private LiveData<ArrayList<SelectedProductPresentation>> selectedProducts;
 
-    public SelectedProductsViewModel(@NonNull Application application,
+    SelectedProductsViewModel(@NonNull Application application,
                                      ProductsRepository repository) {
         super(application);
         this.repository = repository;
+    }
+
+    public ArrayList<Product> getRawSelectedProducts() {
+        return repository.getSelectedProducts().getValue();
     }
 
     public LiveData<ArrayList<SelectedProductPresentation>> getSelectedProducts() {
