@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import es.developer.achambi.cabifychallenge.ProductsAssembler;
-import es.developer.achambi.cabifychallenge.core.checkout.CheckoutActivity;
+import es.developer.achambi.cabifychallenge.core.checkout.ui.CheckoutActivity;
 import es.developer.achambi.cabifychallenge.core.products.ui.viewmodel.ProductPresentation;
 import es.developer.achambi.cabifychallenge.core.products.ui.viewmodel.ProductsViewModel;
 import es.developer.achambi.cabifychallenge.R;
@@ -21,11 +21,17 @@ import es.developer.achambi.cabifychallenge.core.selected.SelectedProductsAdapte
 import es.developer.achambi.cabifychallenge.core.selected.viewmodel.SelectedProductsViewModel;
 import es.developer.achambi.cabifychallenge.core.ui.LoadingBackground;
 
+/**
+ * In order to handle activity/fragment life cycles i'm using android ViewModel and LiveData. The
+ * products data will persist through activity recreations, but due to time constraints this screen
+ * won't persist it's state if the application is being recreated. In order to implement this
+ * feature the savedInstanceState should be used trying to keep there the minimal required data to
+ * restore the view state.
+ */
 public class ProductsFragment extends Fragment {
     private RecyclerView recyclerView;
     private ProductsAdapter adapter;
     private LoadingBackground loadingBackground;
-    private RecyclerView selectedRecyclerView;
     private SelectedProductsAdapter selectedProductsAdapter;
     private SelectedProductsViewModel selectedProductsViewModel;
 
@@ -46,7 +52,7 @@ public class ProductsFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.products_fragment_layout, container, false);
         recyclerView = root.findViewById(R.id.products_recycler_view);
-        selectedRecyclerView = root.findViewById(R.id.selected_products_recyclerview);
+        RecyclerView selectedRecyclerView = root.findViewById(R.id.selected_products_recyclerview);
         root.findViewById(R.id.checkout_button).setOnClickListener((view) -> checkoutSelected());
         adapter.setListener(this::onProductAddSelected);
         selectedProductsAdapter.setOnDeleteProductListener(this::onDeleteProductSelected);

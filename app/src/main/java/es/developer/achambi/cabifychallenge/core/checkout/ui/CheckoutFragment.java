@@ -1,4 +1,4 @@
-package es.developer.achambi.cabifychallenge.core.checkout;
+package es.developer.achambi.cabifychallenge.core.checkout.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import es.developer.achambi.cabifychallenge.ProductsAssembler;
 import es.developer.achambi.cabifychallenge.R;
+import es.developer.achambi.cabifychallenge.core.checkout.ui.viewmodel.CheckoutProductsViewModel;
 import es.developer.achambi.cabifychallenge.core.products.data.Product;
 
 public class CheckoutFragment extends Fragment {

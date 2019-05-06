@@ -8,7 +8,7 @@ public class ProductsPresentation {
     public final ArrayList<ProductPresentation> productsPresentations;
     public final DataStatePresentation dataStatePresentation;
 
-    public ProductsPresentation(ArrayList<ProductPresentation> productsPresentations,
+    ProductsPresentation(ArrayList<ProductPresentation> productsPresentations,
                                 DataStatePresentation dataStatePresentation) {
         this.productsPresentations = productsPresentations;
         this.dataStatePresentation = dataStatePresentation;

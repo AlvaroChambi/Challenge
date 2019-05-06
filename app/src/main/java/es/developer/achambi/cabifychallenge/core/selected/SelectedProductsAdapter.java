@@ -16,6 +16,10 @@ import es.developer.achambi.cabifychallenge.databinding.SelectedProductsItemLayo
 
 import static androidx.recyclerview.widget.RecyclerView.NO_POSITION;
 
+/**
+ * Given the nature of this list (will be modified), a SortedList was added to handle adapter
+ * on data changes.
+ */
 public class SelectedProductsAdapter
         extends RecyclerView.Adapter<SelectedProductsAdapter.ViewHolder> {
     public interface OnDeleteProductListener {

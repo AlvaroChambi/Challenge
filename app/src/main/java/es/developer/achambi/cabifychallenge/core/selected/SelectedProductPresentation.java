@@ -5,7 +5,7 @@ public class SelectedProductPresentation {
     public final String name;
     public final String quantity;
 
-    public SelectedProductPresentation(String code, String name, String quantity) {
+    SelectedProductPresentation(String code, String name, String quantity) {
         this.code = code;
         this.name = name;
         this.quantity = quantity;

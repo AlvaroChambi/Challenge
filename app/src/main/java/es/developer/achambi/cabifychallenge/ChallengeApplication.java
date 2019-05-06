@@ -2,7 +2,7 @@ package es.developer.achambi.cabifychallenge;
 
 import android.app.Application;
 
-import es.developer.achambi.cabifychallenge.core.checkout.CheckoutProductRepository;
+import es.developer.achambi.cabifychallenge.core.checkout.data.CheckoutProductRepository;
 import es.developer.achambi.cabifychallenge.core.products.data.ProductsRepository;
 import es.developer.achambi.cabifychallenge.core.products.data.ProductsRetrofitService;
 import es.developer.achambi.cabifychallenge.core.products.ui.viewmodel.ProductsViewModelFactory;

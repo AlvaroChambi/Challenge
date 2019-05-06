@@ -8,7 +8,7 @@ import es.developer.achambi.cabifychallenge.R;
 import es.developer.achambi.cabifychallenge.core.products.data.Product;
 
 public class SelectedProductPresentationBuilder {
-    public static SelectedProductPresentation buildPresentation(Context context, Product product) {
+    static SelectedProductPresentation buildPresentation(Context context, Product product) {
         return new SelectedProductPresentation(
                 product.getProductCode(),
                 product.getProductName(),

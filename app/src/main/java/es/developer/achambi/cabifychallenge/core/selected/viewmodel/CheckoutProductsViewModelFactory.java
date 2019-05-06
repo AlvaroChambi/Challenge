@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import es.developer.achambi.cabifychallenge.core.checkout.CheckoutProductRepository;
-import es.developer.achambi.cabifychallenge.core.checkout.CheckoutProductsViewModel;
+import es.developer.achambi.cabifychallenge.core.checkout.data.CheckoutProductRepository;
+import es.developer.achambi.cabifychallenge.core.checkout.ui.viewmodel.CheckoutProductsViewModel;
 
 public class CheckoutProductsViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     private CheckoutProductRepository respository;

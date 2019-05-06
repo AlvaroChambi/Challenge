@@ -16,6 +16,10 @@ import es.developer.achambi.cabifychallenge.core.products.ui.viewmodel.ProductPr
 
 import static androidx.recyclerview.widget.RecyclerView.NO_POSITION;
 
+/**
+ * Given that the products list won't be modified, i didn't consider necessary to use a SortedList
+ * to update the adapter data.
+ */
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHolder> {
     public interface OnAddProductListener {
         void onProductAddSelected(ProductPresentation productPresentation);

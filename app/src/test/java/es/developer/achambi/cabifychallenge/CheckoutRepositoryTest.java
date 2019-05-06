@@ -5,13 +5,17 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import es.developer.achambi.cabifychallenge.core.checkout.CheckoutProduct;
-import es.developer.achambi.cabifychallenge.core.checkout.CheckoutProductRepository;
+import es.developer.achambi.cabifychallenge.core.checkout.data.CheckoutProductRepository;
+import es.developer.achambi.cabifychallenge.core.checkout.data.CheckoutProducts;
 import es.developer.achambi.cabifychallenge.core.products.data.Product;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+/**
+ * When the data logic increases it's complexity unit test for the data transformation are being
+ * added
+ */
 public class CheckoutRepositoryTest {
     private CheckoutProductRepository repository;
     private ArrayList<Product> products;
@@ -30,10 +34,10 @@ public class CheckoutRepositoryTest {
         product.setQuantity(3);
         products.add( product );
 
-        ArrayList<CheckoutProduct> checkoutProducts = repository.getCheckoutProducts( products );
+        CheckoutProducts checkoutProducts = repository.buildCheckoutProducts( products );
 
-        assertNull(checkoutProducts.get(0).getDiscountedTotal());
-        assertEquals( 30f, checkoutProducts.get(0).getTotal(), 0.1);
+        assertNull(checkoutProducts.getProducts().get(0).getDiscountedTotal());
+        assertEquals( 30f, checkoutProducts.getProducts().get(0).getTotal(), 0.1);
     }
 
     @Test
@@ -44,10 +48,10 @@ public class CheckoutRepositoryTest {
         product.setQuantity(5);
         products.add( product );
 
-        ArrayList<CheckoutProduct> checkoutProducts = repository.getCheckoutProducts( products );
+        CheckoutProducts checkoutProducts = repository.buildCheckoutProducts( products );
 
-        assertEquals( 15f, checkoutProducts.get(0).getDiscountedTotal(), 0.1);
-        assertEquals( 25f, checkoutProducts.get(0).getTotal(), 0.1);
+        assertEquals( 15f, checkoutProducts.getProducts().get(0).getDiscountedTotal(), 0.1);
+        assertEquals( 25f, checkoutProducts.getProducts().get(0).getTotal(), 0.1);
     }
 
     @Test
@@ -58,10 +62,10 @@ public class CheckoutRepositoryTest {
         product.setQuantity(1);
         products.add( product );
 
-        ArrayList<CheckoutProduct> checkoutProducts = repository.getCheckoutProducts( products );
+        CheckoutProducts checkoutProducts = repository.buildCheckoutProducts( products );
 
-        assertNull(checkoutProducts.get(0).getDiscountedTotal());
-        assertEquals( 5f, checkoutProducts.get(0).getTotal(), 0.1);
+        assertNull(checkoutProducts.getProducts().get(0).getDiscountedTotal());
+        assertEquals( 5f, checkoutProducts.getProducts().get(0).getTotal(), 0.1);
     }
 
     @Test
@@ -72,10 +76,10 @@ public class CheckoutRepositoryTest {
         product.setQuantity(4);
         products.add( product );
 
-        ArrayList<CheckoutProduct> checkoutProducts = repository.getCheckoutProducts( products );
+        CheckoutProducts checkoutProducts = repository.buildCheckoutProducts( products );
 
-        assertEquals( 76f, checkoutProducts.get(0).getDiscountedTotal(), 0.1 );
-        assertEquals( 80f, checkoutProducts.get(0).getTotal(), 0.1 );
+        assertEquals( 76f, checkoutProducts.getProducts().get(0).getDiscountedTotal(), 0.1 );
+        assertEquals( 80f, checkoutProducts.getProducts().get(0).getTotal(), 0.1 );
     }
 
     @Test
@@ -86,9 +90,9 @@ public class CheckoutRepositoryTest {
         product.setQuantity(2);
         products.add( product );
 
-        ArrayList<CheckoutProduct> checkoutProducts = repository.getCheckoutProducts( products );
+        CheckoutProducts checkoutProducts = repository.buildCheckoutProducts( products );
 
-        assertNull(checkoutProducts.get(0).getDiscountedTotal());
-        assertEquals( 40f, checkoutProducts.get(0).getTotal(), 0.1);
+        assertNull(checkoutProducts.getProducts().get(0).getDiscountedTotal());
+        assertEquals( 40f, checkoutProducts.getProducts().get(0).getTotal(), 0.1);
     }
 }

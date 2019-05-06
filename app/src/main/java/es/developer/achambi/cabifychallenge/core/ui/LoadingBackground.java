@@ -10,6 +10,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import es.developer.achambi.cabifychallenge.R;
 
+/**
+ * On an network error, an error message will be displayed, but due to time constraints a retry
+ * option has not been added
+ */
 public class LoadingBackground extends ConstraintLayout {
     private TextView errorMessage;
     private ProgressBar loading;

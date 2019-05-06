@@ -1,4 +1,4 @@
-package es.developer.achambi.cabifychallenge.core.checkout;
+package es.developer.achambi.cabifychallenge.core.checkout.ui.viewmodel;
 
 import java.util.ArrayList;
 

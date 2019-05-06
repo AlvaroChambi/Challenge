@@ -11,6 +11,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Given the scope of the project the repositories are accessing the data directly through the
+ * retrofit client, but another level of abstraction to access the data will be preferred
+ */
 public class ProductsRepository {
     private ProductsRetrofitService retrofitService;
     private LiveData<DataState<ArrayList<Product>>> cachedProducts;
@@ -19,7 +23,7 @@ public class ProductsRepository {
     public ProductsRepository( ProductsRetrofitService retrofitService ) {
         this.retrofitService = retrofitService;
         MutableLiveData<ArrayList<Product>> data = new MutableLiveData<>();
-        data.setValue(new ArrayList<>());
+        data.postValue(new ArrayList<>());
         selectedProducts = data;
     }
 

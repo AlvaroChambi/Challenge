@@ -1,4 +1,4 @@
-package es.developer.achambi.cabifychallenge.core.checkout;
+package es.developer.achambi.cabifychallenge.core.checkout.data;
 
 public class Discount {
     public enum Type {

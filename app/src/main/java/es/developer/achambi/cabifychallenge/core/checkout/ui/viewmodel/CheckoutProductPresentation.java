@@ -1,4 +1,4 @@
-package es.developer.achambi.cabifychallenge.core.checkout;
+package es.developer.achambi.cabifychallenge.core.checkout.ui.viewmodel;
 
 public class CheckoutProductPresentation {
     public final String name;

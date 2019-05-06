@@ -1,10 +1,12 @@
-package es.developer.achambi.cabifychallenge.core.checkout;
+package es.developer.achambi.cabifychallenge.core.checkout.ui.viewmodel;
 
 import android.content.Context;
 
 import java.util.ArrayList;
 
 import es.developer.achambi.cabifychallenge.R;
+import es.developer.achambi.cabifychallenge.core.checkout.data.CheckoutProduct;
+import es.developer.achambi.cabifychallenge.core.checkout.data.CheckoutProducts;
 
 import static es.developer.achambi.cabifychallenge.core.products.ui.viewmodel.ProductPresentationBuilder.buildFormattedPrice;
 import static es.developer.achambi.cabifychallenge.core.selected.SelectedProductPresentationBuilder.formatQuantity;

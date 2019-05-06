@@ -1,4 +1,4 @@
-package es.developer.achambi.cabifychallenge.core.checkout;
+package es.developer.achambi.cabifychallenge.core.checkout.ui.viewmodel;
 
 import android.app.Application;
 
@@ -9,6 +9,7 @@ import androidx.lifecycle.Transformations;
 
 import java.util.ArrayList;
 
+import es.developer.achambi.cabifychallenge.core.checkout.data.CheckoutProductRepository;
 import es.developer.achambi.cabifychallenge.core.products.data.Product;
 
 public class CheckoutProductsViewModel extends AndroidViewModel {

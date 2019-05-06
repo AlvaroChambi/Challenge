@@ -1,4 +1,4 @@
-package es.developer.achambi.cabifychallenge.core.checkout;
+package es.developer.achambi.cabifychallenge.core.checkout.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import es.developer.achambi.cabifychallenge.R;
+import es.developer.achambi.cabifychallenge.core.checkout.ui.viewmodel.CheckoutProductPresentation;
 import es.developer.achambi.cabifychallenge.databinding.CheckoutItemProductsBinding;
 
 public class CheckoutProductsAdapter extends RecyclerView.Adapter<CheckoutProductsAdapter.ViewHolder> {

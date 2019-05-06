@@ -1,4 +1,4 @@
-package es.developer.achambi.cabifychallenge.core.checkout;
+package es.developer.achambi.cabifychallenge.core.checkout.data;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -12,7 +12,7 @@ public class CheckoutProductRepository {
     private ArrayList<Discount> availableDiscounts;
 
     public CheckoutProductRepository() {
-        //TODO Given the small scope of this challenge i don't consider necessary more than
+        //TODO Given the small scope of this challenge i didn't consider necessary more than
         // a static list of discounts, but the access to the available discounts could be moved to
         // a standalone data source to be fetched from a database or a from a network service
         availableDiscounts = new ArrayList<>();
@@ -28,13 +28,18 @@ public class CheckoutProductRepository {
 
     public LiveData<CheckoutProducts> getCheckoutProducts(ArrayList<Product> products) {
         final MutableLiveData<CheckoutProducts> mutableData = new MutableLiveData<>();
+        CheckoutProducts list = buildCheckoutProducts(products);
+        mutableData.setValue( list );
+        list.setTotal(buildTotal(list.getProducts()));
+        return mutableData;
+    }
+
+    public CheckoutProducts buildCheckoutProducts(ArrayList<Product> products) {
         CheckoutProducts list = new CheckoutProducts();
         for (Product product : products) {
             list.getProducts().add( buildCheckoutProduct( product ) );
         }
-        mutableData.setValue( list );
-        list.setTotal(buildTotal(list.getProducts()));
-        return mutableData;
+        return list;
     }
 
     private float buildTotal(ArrayList<CheckoutProduct> products) {

@@ -17,6 +17,10 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
+/**
+ * UI test are being keept as simple as possible in cases where we are mocking anything that isn't
+ * ui related
+ */
 public class ProductsErrorTest extends BaseAutomationTest {
     private ProductsRepository errorRepository = new ProductsRepository(null){
         @Override

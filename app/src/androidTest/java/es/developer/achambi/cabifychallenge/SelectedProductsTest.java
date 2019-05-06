@@ -13,6 +13,10 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static es.developer.achambi.cabifychallenge.matcher.RecyclerViewMatcher.withRecyclerView;
 import static org.hamcrest.core.AllOf.allOf;
 
+/**
+ * UI integration test avoiding any mock in order to the test the whole data flow.
+ * Data related logic is been tested along the ui display logic.
+ */
 public class SelectedProductsTest extends BaseAutomationTest {
     @Test
     public void addProductToSelected() {
@@ -22,8 +26,6 @@ public class SelectedProductsTest extends BaseAutomationTest {
 
         onView( withRecyclerView(R.id.selected_products_recyclerview).atPosition(0) )
             .check( matches( hasDescendant(withText("Cabify Voucher")) ));
-        onView( withRecyclerView(R.id.selected_products_recyclerview).atPosition(0) )
-                .check( matches( hasDescendant(withText("x1")) ));
     }
 
     @Test

@@ -9,7 +9,7 @@ import es.developer.achambi.cabifychallenge.core.ui.DataState;
 import es.developer.achambi.cabifychallenge.core.products.data.Product;
 
 public class ProductPresentationBuilder {
-    public static ArrayList<ProductPresentation> buildPresentation(
+    static ArrayList<ProductPresentation> buildPresentation(
             Context context, DataState<ArrayList<Product>> products) {
         if( products.getValue() == DataState.Value.ERROR ) {
             return new ArrayList<>();
